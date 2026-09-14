@@ -10,6 +10,15 @@ control, participant identity, billing, telemetry, and device integrations as
 high-impact domains where incorrect behavior can create safety, privacy, or
 financial harm.
 
+## Review priorities
+
+When reviewing a pull request, prioritize exploitable security weaknesses,
+incorrect behavior, authorization gaps, unsafe device commands, privacy or
+financial risks, dependency risk, and missing tests. Explain the concrete
+failure scenario and point to the smallest relevant code location. Avoid
+blocking on cosmetic preferences or speculative concerns without an observable
+impact.
+
 ## Working rules
 
 - Read the relevant issue, nearby code, tests, and documentation before editing
