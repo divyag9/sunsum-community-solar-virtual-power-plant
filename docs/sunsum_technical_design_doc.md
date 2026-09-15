@@ -316,7 +316,7 @@ stateDiagram-v2
 
 **What it is.** Route each visitor to the right experience in one click.
 
-### Build
+**Build:**
 
 - Three entry paths: submit rooftop, submit land, investor.
 - Static decision-tree Q&A for unsure visitors - no AI.
@@ -329,7 +329,7 @@ stateDiagram-v2
 
 **What it is.** Capture enough information to create a project record.
 
-### Build
+**Build:**
 
 - Multi-step form: contact, address, rooftop or land, ownership status, usable area, electricity usage or bill upload, existing solar, photos and documents, consent.
 - Draft save plus a computed "still missing" list.
@@ -342,7 +342,7 @@ stateDiagram-v2
 
 **What it is.** Screen a submitted site transparently, without claiming an engineering determination.
 
-### Build
+**Build:**
 
 - Call S-VIA on submit; persist an append-only assessment row.
 - Return the five charter outputs: estimated system-size range, estimated annual production range, preliminary project type, missing-data and risk flags, and one of three results.
@@ -362,7 +362,7 @@ stateDiagram-v2
 
 **What it is.** Tell the owner where they stand and what happens next.
 
-### Build
+**Build:**
 
 - One composed endpoint returning: site, submission status, viability result, outstanding information, documents and acknowledgements, project stage, next expected action, contact.
 - Outstanding information is the owner's single inbox - operator `request_info` items and, later, forwarded diligence items appear in one list, never a separate investor surface.
@@ -373,7 +373,7 @@ stateDiagram-v2
 
 **What it is.** The system of record for origination.
 
-### Build
+**Build:**
 
 - Submission queue filtered by status, type, location and viability.
 - Submission detail with document review; accept, reject or request-info; assignment to an internal owner; notes and activity history.
@@ -390,7 +390,7 @@ stateDiagram-v2
 
 **What it is.** Collect files and record agreement, without a production e-signature dependency.
 
-### Build
+**Build:**
 
 - Upload against a required-document checklist per project.
 - Typed-name acknowledgement with timestamp and status.
@@ -402,7 +402,7 @@ stateDiagram-v2
 
 **What it is.** Investors find projects that fit their mandate, and see more of each project as they engage.
 
-### Access tiers
+**Access tiers:**
 
 | Tier | Unlocked by | Shows |
 |---|---|---|
@@ -410,7 +410,7 @@ stateDiagram-v2
 | 1 | Expressing interest | Full viability result and its factors, assessment history, project timeline, site characteristics, non-sensitive documents |
 | 2 | Commitment (post-MVP) | Financial and technical diligence material |
 
-### Build
+**Build:**
 
 - **Onboarding.** Profile form: organisation, investor type, capital type, funding stage focus, ticket size, geographies, objectives, impact priorities, decision criteria. Picklists rather than free text, so answers can drive filters. Sets `deal_room_profile`. Self-declared, not verified.
 - **Portfolio (tier 0).** Project count and total capacity, with filters for stage, viability and project type. Defaults to a mandate match against open funding needs, which the investor can widen.
@@ -430,21 +430,21 @@ stateDiagram-v2
 
 **What it is.** Track an investor's progress on a project, separately from the project's own development stage. States and transitions are in §6.3.
 
-### Build (MVP)
+**Build (MVP):**
 
 - Express interest → engagement state `interested`, in a single transaction that re-checks project visibility and writes an activity row.
 - Unlocks tier 1; the interest appears on the operator's project timeline.
 
-### Model only - schema and API contract, no UI
+**Model only - schema and API contract, no UI:**
 
 - `committed` → `underwriting` → `approved` → `funded`, plus `declined` and `withdrawn`.
 - `funding_needs` seeded and read-only, so the philanthropy panel has real content.
 
-### Design only - not built
+**Design only - not built:**
 
 - Diligence loop: investor raises a request → operator triages → optionally forwards to the site owner → owner uploads → operator resolves.
 
-### Rules
+**Rules:**
 
 - Engagement state never changes project stage.
 - Commitment is non-binding; no capital moves and no capital stack is managed.
@@ -508,7 +508,7 @@ Secrets (DB, Blob) in App Settings/Key Vault. Private blob container with short-
 | **S-VIEW** | View Composition | Read-only assembly of the site-owner dashboard and deal-room payloads across services | *none* | api | Features D and G (composed screens) | WS2 |
 | **S-VIA** | Viability Engine | Geocoding, capacity/production estimation, screening rules, flags, ruleset versioning | *none* (owns ruleset config) | viability | Workstream 4, "versioned viability service" | WS4 |
 
-### Not services:
+**Not services:**
 
 - **Geocoding** is an *adapter inside S-VIA*, not a service. It is one provider call plus a cache; a separate deployable would add a network hop and a failure mode for no benefit. Cached results and pre-geocoded seed addresses are the demo-day risk mitigation (§12).
 - **Notifications** are a charter stretch goal. Define the interface (`notify(actor, event, payload)`) as a no-op stub so email/Teams can be added later without touching call sites. Do not build it. Note the engagement lifecycle is the first workflow that genuinely wants notifications - an operator should learn that an investor expressed interest without polling.
