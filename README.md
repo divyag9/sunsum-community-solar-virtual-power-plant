@@ -1,20 +1,81 @@
 ---
-title: Sunsum Community Solar Virtual Power Plant
+title: SunSum Community Solar Virtual Power Plant
 description: Community-owned virtual power plant software for the Microsoft 2026 Global Hackathon
 ---
 
 ## Overview
 
-Sunsum is a Microsoft 2026 Global Hackathon project exploring software for a
-community-owned solar virtual power plant. The project is currently in its
-initial implementation phase.
+SunSum is a Microsoft 2026 Global Hackathon project building software for a
+community-owned solar virtual power plant. By Friday, September 18, the project
+aims to deliver a deployed prototype demonstrating one complete solar-project
+origination journey across three roles:
+
+1. A site owner selects a rooftop or land parcel, submits a potential solar
+   site, and receives a preliminary viability result.
+2. A platform operator reviews the submission, accepts it, rejects it, or asks
+   for more information, then moves an accepted site through the pipeline.
+3. A financier or investor views the pilot portfolio, opens a project's deal
+   room, and reviews the viability and submission data behind it.
+
+All three roles can track a project's development stage.
 
 ## Goals
 
-- Coordinate community solar generation, storage, and flexible demand
-- Give participants transparent insight into energy and financial outcomes
-- Support secure, reliable integrations with energy devices and services
-- Build an open foundation that communities can adapt to local needs
+- Deliver one application URL with site-owner, platform-operator, and investor
+  experiences
+- Complete one new site submission live during the demo
+- Show a transparent preliminary viability result and an operator review
+  workflow
+- Seed at least three Atlanta pilot sites in the operator pipeline and investor
+  portfolio
+- Share a project-status timeline across all three roles
+- Provide an investor portfolio with at least one open deal room
+- Support basic authentication or a reliable role switch for the demo
+- Deliver an architecture diagram, README, and demo video
+
+## Project journey
+
+SunSum uses the following shared pipeline vocabulary:
+
+`Submitted -> Screening -> Pre-development -> Development -> Construction -> Commissioning -> Operations`
+
+The core demo follows a Sweet Auburn property owner from rooftop submission to
+a preliminary "potentially viable" result. An operator reviews and accepts the
+site, moves the resulting project into development, and the site owner sees the
+updated status. An investor then finds the project alongside the seeded pilot
+sites and opens its deal room to review the underlying viability data.
+
+## Workstreams
+
+Seven workstreams coordinate delivery of the three-role journey:
+
+| Workstream | Primary ownership |
+| --- | --- |
+| Full-stack / Front-end | Role interfaces, intake, dashboards, form validation, and API integration |
+| Backend / Workflow | System-of-record services, permissions, stage transitions, decisions, documents, and audit history |
+| Azure / DevOps | Environments, deployment, identity, storage, configuration protection, logging, and health checks |
+| Data / Solar-modeling | Screening rules, Atlanta pilot data, geocoding, capacity and production estimates, and viability factors |
+| UX/UI | Accessible role journeys, screen specifications, reusable components, and interface states |
+| QA / Demo | Acceptance testing, accessibility and mobile validation, bug triage, and submission materials |
+| Project Management / Technical PM Agent | Cross-team coordination, the GroundSwell operator workflow, templates, and PM-agent development |
+
+## Named stretch: AI-assisted underwriting
+
+After the complete three-role journey works, a Special Community Endowment
+reviewer may request an AI-generated first-pass underwriting summary from a
+project's deal room. The draft uses already-collected project and viability
+data, presents a recommendation, risk flags, and the data used, and remains
+clearly labeled as AI-assisted. A human reviewer can accept, edit, or reject the
+draft; it never commits capital or represents a final credit decision.
+
+## Out of scope
+
+The hackathon prototype does not include live Georgia Power integration, grid
+dispatch, device or inverter control, utility interconnection processing, PPA
+or off-taker matching, automated investor underwriting, capital-stack
+management, REC settlement or tokenization, contractor procurement, production
+legal agreements, final engineering feasibility, or multi-country
+configuration.
 
 ## Project status
 
