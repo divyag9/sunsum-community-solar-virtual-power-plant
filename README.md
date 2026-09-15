@@ -18,9 +18,34 @@ initial design phase.
 
 ## Project status
 
-The architecture, technology stack, and first implementation milestone are
-still being defined. Proposals should begin as a GitHub issue so assumptions,
-scope, and acceptance criteria are visible before implementation starts.
+The repository contains a minimal Next.js application template. Its main page
+submits a name to a server-side API route and displays the response. The
+template uses React, TypeScript, ESLint, and minimal CSS.
+
+## Getting started
+
+Install dependencies and start the development server:
+
+```bash
+npm install
+npm run dev
+```
+
+Open <http://localhost:3000> in a browser.
+
+Use these commands to validate a change:
+
+```bash
+npm run lint
+npm run build
+```
+
+## Application structure
+
+- `app/page.tsx` contains the form and submission state
+- `app/api/submit/route.ts` validates and handles form submissions
+- `app/globals.css` contains the minimal global styles
+- `app/layout.tsx` defines the shared page layout and metadata
 
 ## Contributing
 

@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+main {
+  width: min(100% - 2rem, 32rem);
+  margin: 4rem auto;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+input,
+button {
+  min-height: 2.5rem;
+  padding: 0.5rem;
+  font: inherit;
+}
+
+button {
+  width: fit-content;
+}
